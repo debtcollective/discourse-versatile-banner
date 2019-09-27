@@ -7,7 +7,6 @@
 .banner-box {
   color: $primary_text_color;
   position: relative;
-  margin-bottom: 20px;
   background-image: url($banner_background_image);
   background-size: cover;
   background-position: center center;
@@ -54,11 +53,13 @@
     }
   }
 
-  h1, h2, h3 {
+  h1,
+  h2,
+  h3 {
     text-align: center;
     color: $secondary_text_color;
   }
-  
+
   a {
     color: $link_text_color;
   }

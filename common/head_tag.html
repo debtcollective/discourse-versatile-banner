@@ -46,7 +46,7 @@ function setupBanner() {
   }
 }
 
-api.createWidget("banner-box-widget", {
+api.createWidget(themePrefix("banner-box-widget"), {
   tagName: "div.banner-box",
   html(attrs) {
 
@@ -68,22 +68,22 @@ api.createWidget("banner-box-widget", {
     if(!$.cookie("banner_closed") && (showOnHomepage || urlMatch)) {
       return [
         h('div.container', [
-          this.attach("banner-button-container-widget"),
+          this.attach(themePrefix("banner-button-container-widget")),
           h('div.section-header', { innerHTML: settings.main_heading_content }),
-          this.attach('banner-content-widget') 
+          this.attach(themePrefix('banner-content-widget'))
         ])
       ]
     }
   }
 });
 
-api.decorateWidget('banner-box-widget:after', helper => {
+api.decorateWidget(themePrefix('banner-box-widget:after'), helper => {
   helper.widget.appEvents.on('page:changed', () => {
     helper.widget.scheduleRerender();
   });
 });
 
-api.createWidget("banner-button-container-widget", {
+api.createWidget(themePrefix("banner-button-container-widget"), {
   tagName: "div.button-container",
   html(attrs) {
     let buttons = [];
@@ -155,7 +155,7 @@ api.createWidget("banner-button-container-widget", {
   }
 });
 
-api.createWidget("banner-column-icon", {
+api.createWidget(themePrefix("banner-column-icon"), {
   tagName: "div.icon",
   html(attrs) {
     let columnIcon = columnIcons[attrs.column];
@@ -169,7 +169,7 @@ api.createWidget("banner-column-icon", {
   }
 });
 
-api.createWidget("banner-content-widget", {
+api.createWidget(themePrefix("banner-content-widget"), {
   tagName: "div#banner-content_wrap" + setupBanner(),
   html(attrs) {
 
@@ -178,7 +178,7 @@ api.createWidget("banner-content-widget", {
     if(settings.first_column_content) {
       columns.push(
         h('div.first_column.single-box', [
-          this.attach('banner-column-icon', { column: 0 }),
+          this.attach(themePrefix('banner-column-icon'), { column: 0 }),
           h('div', { innerHTML: settings.first_column_content })
         ])
       );
@@ -187,7 +187,7 @@ api.createWidget("banner-content-widget", {
     if(settings.second_column_content) {
       columns.push(
         h('div.second_column.single-box', [
-          this.attach('banner-column-icon', { column: 1 }),
+          this.attach(themePrefix('banner-column-icon'), { column: 1 }),
           h('div', { innerHTML: settings.second_column_content })
         ])
       );
@@ -196,7 +196,7 @@ api.createWidget("banner-content-widget", {
     if(settings.third_column_content) {
       columns.push(
         h('div.third_column.single-box', [
-          this.attach('banner-column-icon', { column: 2 }),
+          this.attach(themePrefix('banner-column-icon'), { column: 2 }),
           h('div', { innerHTML: settings.third_column_content })
         ])
       );
@@ -205,7 +205,7 @@ api.createWidget("banner-content-widget", {
     if(settings.fourth_column_content) {
       columns.push(
         h('div.fourth_column.single-box', [
-          this.attach('banner-column-icon', { column: 3 }),
+          this.attach(themePrefix('banner-column-icon'), { column: 3 }),
           h('div', { innerHTML: settings.fourth_column_content })
         ])
       );
@@ -218,7 +218,7 @@ api.createWidget("banner-content-widget", {
 </script>
 
 <script type="text/x-handlebars" data-template-name="/connectors/custom-banner/banner">
-  {{mount-widget widget="banner-box-widget"}}
+  {{mount-widget widget=(theme-prefix "banner-box-widget")}}
 </script>
 
 <script type="text/x-handlebars" data-template-name="/connectors/above-main-container/banner-themes">
